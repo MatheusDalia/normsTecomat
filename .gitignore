@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Streamlit
+.streamlit/
+
+# Arquivos de edição (serão criados automaticamente)
+edicoes_salvas.json
+backup_edicoes.json
+editing_progress.json
+
+# Backups
+SGQP-Tecomat.norms.backup_*.json
+
+# Configurações
+config.json
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporários
+*.tmp
+*.temp 
