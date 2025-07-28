@@ -6,7 +6,7 @@ import time
 
 # Configuração da página
 st.set_page_config(
-    page_title="Editor ActionPlan - Tecomat",
+    page_title="Editor ActionPlan - Tecomat 010",
     page_icon="💾",
     layout="wide"
 )
