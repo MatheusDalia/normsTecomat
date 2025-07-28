@@ -294,6 +294,18 @@ for i, ap in enumerate(filtrados):
                         st.write(f"Depois: {ap['text']}")
 
         with col2:
+            # Verifica se há outros ActionPlans com a mesma descrição
+            descricao_atual = ap['descricao']
+            duplicados = [
+                ap2 for ap2 in action_plans if ap2['descricao'] == descricao_atual]
+            edicao_em_grupo = False
+            mostrar_checkbox = len(duplicados) > 1
+            if mostrar_checkbox:
+                edicao_em_grupo = st.checkbox(
+                    f"Aplicar para todos os {len(duplicados)} ActionPlans com esta descrição?",
+                    key=f"grupo_{ap['obj_idx']}_{ap['req_idx']}_{ap['ap_idx']}"
+                )
+
             # Campos de edição
             novo_titulo = st.text_input(
                 "Título:",
@@ -312,9 +324,17 @@ for i, ap in enumerate(filtrados):
 
             # Salvar automaticamente se houve mudança
             if novo_titulo != ap['title'] or novo_texto != ap['text']:
-                ap['title'] = novo_titulo
-                ap['text'] = novo_texto
-                salvar_edicao_individual(ap, novo_titulo, novo_texto)
+                if mostrar_checkbox and edicao_em_grupo:
+                    # Edição em grupo: propaga para todos com a mesma descrição
+                    for ap2 in duplicados:
+                        ap2['title'] = novo_titulo
+                        ap2['text'] = novo_texto
+                        salvar_edicao_individual(ap2, novo_titulo, novo_texto)
+                else:
+                    # Edição individual
+                    ap['title'] = novo_titulo
+                    ap['text'] = novo_texto
+                    salvar_edicao_individual(ap, novo_titulo, novo_texto)
 
         st.markdown("---")
 
