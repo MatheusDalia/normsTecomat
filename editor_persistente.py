@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 # Caminhos dos arquivos
-JSON_PATH = 'ActionPlan_Final_21-07-2025_1034.json'
+JSON_PATH = 'SGQP-Tecomat.norms13.11.2025'
 EDITADOS_PATH = 'edicoes_salvas.json'
 BACKUP_PATH = 'backup_edicoes.json'
 
